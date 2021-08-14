@@ -6,16 +6,19 @@ on:
 jobs:
   say_hello:
     runs-on: ubuntu-latest
+    outputs: ${{ steps.set-flag.outputs.flag }}
     steps:
       - name: saying hello
+        id: set-flag
         run: |
          echo "Hello world"
          echo ${{ github.event_name }}
          env
          sleep 30
+         echo "::set-output name=flag::true"
   second_job:
     runs-on: ubuntu-latest
-    if: ${{ github.event_name == 'workflow_dispatch' }} || ${{ needs.say_hello.result == 'success' }}
+    if: ${{ github.event_name == 'workflow_dispatch' }} || ${{ needs.say_hello.outputs.flag }}
     steps:
       - name: second job
         run: |
