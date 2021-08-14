@@ -1,5 +1,6 @@
 name: Workflow
 on:
+  push:
   workflow_dispatch:
 
 jobs:
@@ -11,9 +12,10 @@ jobs:
          echo "Hello world"
          echo ${{ github.event_name }}
          env
+         sleep 30
   second_job:
     runs-on: ubuntu-latest
-    if: ${{ github.event_name == 'workflow_dispatch' }}
+    if: ${{ github.event_name == 'workflow_dispatch' }} || ${{ needs.say_hello }}
     steps:
       - name: second job
         run: |
