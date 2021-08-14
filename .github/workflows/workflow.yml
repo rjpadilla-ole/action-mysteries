@@ -22,8 +22,8 @@ jobs:
     runs-on: ubuntu-latest
     if: always()
     needs: [say_hello]
-    if: ${{ github.event_name == 'workflow_dispatch' }} || ${{ needs.say_hello.outputs.flag }}
     steps:
       - name: second job
+        if: ${{ github.event_name == 'workflow_dispatch' }} || ${{ needs.say_hello.outputs.flag }}
         run: |
           echo "i second job"
