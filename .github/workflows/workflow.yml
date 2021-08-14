@@ -6,6 +6,7 @@ on:
 jobs:
   say_hello:
     runs-on: ubuntu-latest
+    if: ${{ github.event_name == 'push' }} 
     outputs: 
       flag: ${{ steps.set-flag.outputs.flag }}
     steps:
