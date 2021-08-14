@@ -16,11 +16,11 @@ jobs:
          echo "Hello world"
          echo ${{ github.event_name }}
          env
-         sleep 30
+         sleep 10
          echo "::set-output name=flag::true"
   second_job:
     runs-on: ubuntu-latest
-    if: always() && ${{ github.event_name == 'workflow_dispatch' }} 
+    if: always() 
     needs: [say_hello]
     steps:
       - name: second job
