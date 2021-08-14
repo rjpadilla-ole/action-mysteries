@@ -17,7 +17,7 @@ jobs:
          echo ${{ github.event_name }}
          env
          sleep 10
-         echo "::set-output name=flag::true"
+        #  echo "::set-output name=flag::true"
   second_job:
     runs-on: ubuntu-latest
     if: always() 
