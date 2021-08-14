@@ -20,7 +20,7 @@ jobs:
         #  echo "::set-output name=flag::true"
   second_job:
     runs-on: ubuntu-latest
-    if: always() 
+    if: ${{  github.event_name == 'workflow_dispatch' && always() }}
     needs: [say_hello]
     steps:
       - name: second job
