@@ -7,4 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: saying hello
-        run: echo "Hello world"
+        run: |
+         echo "Hello world"
+         echo github.event_name
+         ENV
