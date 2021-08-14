@@ -6,7 +6,8 @@ on:
 jobs:
   say_hello:
     runs-on: ubuntu-latest
-    outputs: ${{ steps.set-flag.outputs.flag }}
+    outputs: 
+      flag: ${{ steps.set-flag.outputs.flag }}
     steps:
       - name: saying hello
         id: set-flag
