@@ -15,6 +15,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: second job
-        if: ${{ github.event_name == workflow_dispatch}}
+        if: ${{ github.event_name == 'workflow_dispatch' }}
         run: |
           echo "i second job"
