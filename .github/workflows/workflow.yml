@@ -15,7 +15,7 @@ jobs:
          sleep 30
   second_job:
     runs-on: ubuntu-latest
-    if: ${{ github.event_name == 'workflow_dispatch' }} || ${{ needs.say_hello }}
+    if: ${{ github.event_name == 'workflow_dispatch' }} || ${{ needs.say_hello.result == 'success' }}
     steps:
       - name: second job
         run: |
