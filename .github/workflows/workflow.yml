@@ -24,6 +24,6 @@ jobs:
     needs: [say_hello]
     steps:
       - name: second job
-        if: ${{ github.event_name == 'workflow_dispatch' }} || ${{ needs.say_hello.outputs.flag }}
+        if: ${{ github.event_name == 'workflow_dispatch' }} || ${{ needs.say_hello.outputs.flag == 'true' }}
         run: |
           echo "i second job"
